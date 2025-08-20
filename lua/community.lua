@@ -9,5 +9,8 @@ return {
   -- Indent visualization plugins
   { import = "astrocommunity.indent.indent-blankline-nvim" },
   { import = "astrocommunity.indent.mini-indentscope" },
+  -- Terminal integration plugins
+  { import = "astrocommunity.terminal-integration.vim-tmux-yank" },
+  { import = "astrocommunity.terminal-integration.vim-tmux-navigator" },
   -- import/override with your plugins folder
 }
