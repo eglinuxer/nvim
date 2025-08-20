@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -45,6 +43,15 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
+        list = true, -- enable display of invisible characters
+        listchars = {
+          tab = "→ ", -- show tabs as arrows
+          trail = "•", -- show trailing spaces as dots
+          extends = "⟩", -- show when line extends beyond screen
+          precedes = "⟨", -- show when line precedes screen
+          nbsp = "␣", -- show non-breaking spaces
+          -- space = "·", -- show spaces as middle dots (optional, can be removed if too cluttered)
+        },
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -76,6 +83,35 @@ return {
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
+
+        -- Whitespace management
+        ["<Leader>tw"] = {
+          function()
+            -- Remove trailing whitespace
+            vim.cmd [[%s/\s\+$//e]]
+            print "Trailing whitespace removed"
+          end,
+          desc = "Trim trailing whitespace",
+        },
+
+        ["<Leader>tl"] = {
+          function()
+            -- Remove trailing empty lines
+            vim.cmd [[%s#\($\n\s*\)\+\%$##e]]
+            print "Trailing empty lines removed"
+          end,
+          desc = "Trim trailing empty lines",
+        },
+
+        -- Toggle whitespace display
+        ["<Leader>ul"] = {
+          function()
+            vim.opt_local.list = not vim.opt_local.list:get()
+            local state = vim.opt_local.list:get() and "enabled" or "disabled"
+            print("Whitespace display " .. state)
+          end,
+          desc = "Toggle whitespace display",
+        },
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
