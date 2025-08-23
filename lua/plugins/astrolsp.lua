@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- LSP configuration activated for LLVM project support
 
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
@@ -44,7 +44,30 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      clangd = {
+        capabilities = { offsetEncoding = "utf-8" },
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--clang-tidy",
+          "--header-insertion=iwyu",
+          "--completion-style=detailed",
+          "--function-arg-placeholders",
+          "--fallback-style=llvm",
+          "--compile-commands-dir=build",
+          "--query-driver=**",
+        },
+        root_dir = function(fname)
+          return require("lspconfig.util").root_pattern(
+            "compile_commands.json",
+            "compile_flags.txt",
+            ".clangd",
+            ".git",
+            "CMakeLists.txt",
+            "Makefile"
+          )(fname)
+        end,
+      },
     },
     -- customize how language servers are attached
     handlers = {
