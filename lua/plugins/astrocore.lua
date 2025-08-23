@@ -113,6 +113,13 @@ return {
           desc = "Toggle whitespace display",
         },
 
+        -- C/C++ Build mappings (using <Leader>m prefix to avoid conflicts)
+        ["<Leader>mb"] = { "<cmd>CMakeBuild<cr>", desc = "CMake Build" },
+        ["<Leader>mr"] = { "<cmd>CMakeRun<cr>", desc = "CMake Run" },
+        ["<Leader>mt"] = { "<cmd>CMakeTest<cr>", desc = "CMake Test" },
+        ["<Leader>mc"] = { "<cmd>CMakeClean<cr>", desc = "CMake Clean" },
+        ["<Leader>md"] = { "<cmd>CMakeDebug<cr>", desc = "CMake Debug" },
+
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
       },

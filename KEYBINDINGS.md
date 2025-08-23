@@ -257,6 +257,38 @@
 - `gco` / `gcO` - 注释插入功能
 - 诊断导航现在支持计数 (如：`3]e` 向前跳转3个错误)
 
+### C/C++ 开发快捷键
+| 快捷键 | 功能描述 | 模式 |
+|--------|----------|------|
+| `<Leader>mb` | CMake 构建 | Normal |
+| `<Leader>mr` | CMake 运行 | Normal |
+| `<Leader>mt` | CMake 测试 | Normal |
+| `<Leader>mc` | CMake 清理 | Normal |
+| `<Leader>md` | CMake 调试 | Normal |
+
+### Git 插件快捷键
+| 快捷键 | 功能描述 | 模式 |
+|--------|----------|------|
+| `<Leader>gg` | 打开 Neogit | Normal |
+| `<Leader>gd` | 打开 Diffview | Normal |
+| `<Leader>gc` | 关闭 Diffview | Normal |
+| `<Leader>gh` | 文件历史记录 | Normal |
+| `<Leader>gb` | 切换 Git Blame | Normal |
+| `<Leader>gl` | 生成 Git 链接 | Normal |
+
+### 项目搜索替换 (nvim-spectre)
+| 快捷键 | 功能描述 | 模式 |
+|--------|----------|------|
+| `<Leader>S` | 打开/关闭 Spectre | Normal |
+| `<Leader>sw` | 搜索当前单词 | Normal/Visual |
+| `<Leader>sp` | 在当前文件中搜索 | Normal |
+
+**Spectre 界面内快捷键:**
+- `<Tab>` / `<S-Tab>` - 下一个/上一个查询字段
+- `dd` - 切换结果项目开/关
+- `<Enter>` - 在选定结果处打开文件
+- `<Leader>q` - 发送结果到 quickfix 列表
+
 ---
 
 ## 💡 使用建议

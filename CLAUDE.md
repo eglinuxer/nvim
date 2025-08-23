@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is an AstroNvim v5 configuration repository. AstroNvim is a modern, extensible Neovim distribution that provides a comprehensive IDE-like experience with performance-focused lazy loading and a rich plugin ecosystem. It emphasizes stability, modularity, and ease of customization while maintaining excellent out-of-the-box functionality.
+This is an AstroNvim v5 configuration repository optimized for C++ development. AstroNvim is a modern, extensible Neovim distribution that provides a comprehensive IDE-like experience with performance-focused lazy loading and a rich plugin ecosystem. The configuration emphasizes development productivity with Git integration, CMake support, and debugging tools while maintaining most plugin configurations in a disabled state for selective activation.
 
 ## Architecture
 
@@ -26,14 +26,18 @@ AstroNvim v5 follows a **plugin-based architecture** where AstroNvim itself is a
 The setup is running **AstroNvim v5** with selective customizations:
 
 **Active Configurations:**
-- `astrocore.lua` - Core vim options, mappings, and features (actively customized)
-- `community.lua` - Community plugin imports (Lua pack, indent visualization, tmux integration)
+- `astrocore.lua` - Core vim options, mappings, and features (actively customized with CMake build mappings)
+- `community.lua` - Comprehensive community plugin imports (Lua pack, C++ pack, Git plugins, debugging tools)
 - `lazy_setup.lua` - Main plugin configuration with AstroNvim v5
 
-**Disabled Configurations:**
+**Disabled Configurations (with guard clauses):**
+- `astrolsp.lua` - LSP server configurations 
+- `astroui.lua` - UI themes and visual customizations
+- `mason.lua` - Tool installer configuration
+- `none-ls.lua` - Formatting and diagnostic tools
+- `treesitter.lua` - Syntax highlighting configuration
+- `user.lua` - Custom plugin additions
 - `polish.lua` - Final customization stage
-- `user.lua` - Additional user plugins and overrides
-- Most `plugins/*.lua` files (using AstroNvim defaults)
 
 ### Key Configuration Files
 - **astrocore.lua** - Core vim options, mappings, autocommands, and AstroNvim features
@@ -127,8 +131,17 @@ if true then return {} end
 ```
 
 ### Configuration Validation
-- **Selene** - Lua linting (configured in `selene.toml`)
-- **lua_ls** - Lua language server (configured in `.luarc.json`)
+- **Selene** - Lua linting (configured in `selene.toml` with Neovim standard)
+- **lua_ls** - Lua language server (configured in `.luarc.json` with format disabled)
+
+### Git Operations
+The repository tracks configuration changes with standard git commands:
+```bash
+git status                     # Check current changes
+git add .                      # Stage all changes
+git commit -m "message"        # Commit changes
+git push                       # Push to remote (if configured)
+```
 
 ## Key Features Currently Active
 
@@ -140,6 +153,11 @@ if true then return {} end
 | `<Leader>ul` | Normal | Toggle list mode | Show/hide invisible characters |
 | `<Leader>bd` | Normal | Buffer picker close | Close buffer via interactive picker |
 | `]b` / `[b` | Normal | Buffer navigation | Navigate between buffers |
+| `<Leader>mb` | Normal | CMake Build | Execute CMake build command |
+| `<Leader>mr` | Normal | CMake Run | Execute CMake run command |
+| `<Leader>mt` | Normal | CMake Test | Execute CMake test command |
+| `<Leader>mc` | Normal | CMake Clean | Execute CMake clean command |
+| `<Leader>md` | Normal | CMake Debug | Execute CMake debug command |
 
 ### Display and Editor Settings
 **Invisible Character Visualization:**
@@ -156,7 +174,14 @@ if true then return {} end
 - `signcolumn = "yes"` - Always show sign column
 
 ### Community Plugins Active
-- **lua pack** - Lua language support (LSP, formatting, snippets)
+- **pack.lua** - Lua language support (LSP, formatting, snippets)
+- **pack.cpp** - C++ language support and development tools
+- **neogit** - Git interface for Neovim
+- **diffview-nvim** - Enhanced diff viewing
+- **git-blame-nvim** - Git blame information
+- **gitlinker-nvim** - Generate git links
+- **nvim-dap-repl-highlights** - Debug REPL syntax highlighting
+- **nvim-spectre** - Search and replace across project
 - **indent-blankline-nvim** - Indentation guides
 - **mini-indentscope** - Current scope highlighting
 - **vim-tmux-yank** - Tmux clipboard integration
@@ -170,6 +195,12 @@ if true then return {} end
 - **Notifications** - User-friendly notification system
 
 ## Development Workflow
+
+### C++/CMake Development
+The configuration includes specialized support for C++ development:
+1. **CMake Commands** - Use `<Leader>m` prefix mappings for build operations
+2. **Language Support** - C++ pack provides LSP, debugging, and syntax highlighting
+3. **Project Search** - Use nvim-spectre (`<Leader>s`) for project-wide search/replace
 
 ### Configuration Testing
 1. **Modify configuration files** - Edit plugin specifications or options

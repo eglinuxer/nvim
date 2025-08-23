@@ -6,11 +6,16 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.cpp" },
   -- Git plugins
   { import = "astrocommunity.git.neogit" },
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.git.git-blame-nvim" },
   { import = "astrocommunity.git.gitlinker-nvim" },
+  -- Debugging plugins
+  { import = "astrocommunity.debugging.nvim-dap-repl-highlights" },
+  -- Search and replace
+  { import = "astrocommunity.search.nvim-spectre" },
   -- Indent visualization plugins
   { import = "astrocommunity.indent.indent-blankline-nvim" },
   { import = "astrocommunity.indent.mini-indentscope" },
