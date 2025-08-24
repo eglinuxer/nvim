@@ -56,6 +56,10 @@ return {
           "--fallback-style=llvm",
           "--compile-commands-dir=build",
           "--query-driver=**",
+          "--pch-storage=memory",
+          "--log=error",
+          "--suggest-missing-includes",
+          "--enable-config",
         },
         root_dir = function(fname)
           return require("lspconfig.util").root_pattern(
