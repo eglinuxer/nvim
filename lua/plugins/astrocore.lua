@@ -46,6 +46,10 @@ return {
         list = true, -- enable display of invisible characters
         updatetime = 100, -- faster completion
         timeoutlen = 300, -- faster key response
+        tabstop = 4, -- number of visual spaces per TAB
+        softtabstop = 4, -- number of spaces in tab when editing
+        shiftwidth = 4, -- number of spaces to use for autoindent
+        expandtab = true, -- tabs are spaces
         listchars = {
           tab = "→ ", -- show tabs as arrows
           trail = "•", -- show trailing spaces as dots
