@@ -7,6 +7,8 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.cpp" },
+  -- Fuzzy finder
+  { import = "astrocommunity.fuzzy-finder.telescope-nvim" },
   -- Git plugins
   { import = "astrocommunity.git.neogit" },
   { import = "astrocommunity.git.diffview-nvim" },
